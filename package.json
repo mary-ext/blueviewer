@@ -1,0 +1,17 @@
+{
+	"scripts": {
+		"dev": "wrangler pages dev static/",
+		"deploy": "wrangler pages deploy static/",
+		"fmt": "prettier --cache --write ."
+	},
+	"dependencies": {
+		"@intrnl/bluesky-client": "^0.2.4",
+		"@intrnl/jsx-to-html": "^0.1.0",
+		"tldts": "^6.0.15"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230922.0",
+		"prettier": "^3.0.3",
+		"wrangler": "^3.10.1"
+	}
+}

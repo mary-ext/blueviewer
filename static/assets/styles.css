@@ -1,0 +1,253 @@
+:root {
+	color-scheme: light;
+	--bg-primary: rgb(254, 254, 254);
+	--bg-input: rgb(255, 255, 255);
+	--bg-highlight: rgb(255, 252, 215);
+	--border-input: rgb(204, 204, 204);
+	--border-input-active: #808080;
+	--text-primary: rgb(51, 51, 51);
+	--text-secondary: rgba(51, 51, 51, 0.59);
+	--text-error: rgb(69, 23, 20);
+	--link-primary: rgb(28, 89, 209);
+	--link-secondary: rgb(96, 129, 189);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--bg-primary: rgb(12, 12, 12);
+		--bg-input: rgb(20, 20, 20);
+		--bg-highlight: rgb(27, 24, 11);
+		--border-input: rgb(48, 48, 48);
+		--border-input-active: #808080;
+		--text-primary: rgba(225, 225, 225, 0.87);
+		--text-secondary: rgba(225, 225, 225, 0.61);
+		--text-error: rgb(253, 207, 204);
+		--link-primary: rgb(138, 177, 255);
+		--link-secondary: rgb(80, 112, 177);
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Arial', sans-serif, 'Noto Color Emoji';
+	color: var(--text-primary);
+	background: var(--bg-primary);
+	font-size: 14px;
+	line-height: 1.5;
+	tab-size: 4;
+}
+
+body {
+	margin: 0 auto;
+}
+
+@media (min-width: 481px) {
+	body {
+		max-width: 900px;
+	}
+}
+
+button,
+input {
+	background: var(--bg-input);
+	border: 1px solid var(--border-input);
+	border-radius: 0;
+	padding: 4px 6px;
+}
+button:focus-visible,
+input:focus {
+	outline: none;
+	border-color: var(--border-input-active);
+}
+
+.page {
+	margin: 16px 8px;
+}
+
+.main-page {
+	& input {
+		width: 50%;
+	}
+	& .error {
+		color: var(--text-error);
+	}
+}
+
+.thread-page {
+	& .divider {
+		opacity: 0.5;
+		border-bottom: 1px solid var(--text-secondary);
+		margin: 16px 0;
+	}
+
+	& .children {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+}
+
+/** `linkwarn` Link warnings */
+.linkwarn {
+	color: var(--text-secondary);
+}
+.linkwarn__highlight {
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+/** `show-more` Show more */
+.show-more {
+	color: var(--text-secondary);
+	text-decoration: none;
+}
+.show-more__text {
+	.show-more:hover & {
+		text-decoration: underline;
+	}
+}
+.show-more__icon {
+	height: 16px;
+	width: 16px;
+	rotate: 180deg;
+	vertical-align: -1px;
+}
+
+/** `post` Post */
+.post {
+	position: relative;
+
+	&.is-lined::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: calc(16px + 12px);
+		bottom: -8px;
+		left: 8px;
+		opacity: 0.5;
+		border-right: 1px solid var(--text-secondary);
+	}
+
+	&:target {
+		& > .post-header,
+		& > .post-body {
+			background-color: var(--bg-highlight);
+		}
+	}
+}
+
+.post-header {
+	font-size: 13px;
+	color: var(--text-secondary);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.post-header__avatar {
+	height: 16px;
+	width: 16px;
+	border-radius: 16px;
+
+	&:not([src]) {
+		background-color: var(--text-secondary);
+	}
+}
+.post-header__name {
+	color: var(--text-primary);
+	overflow: hidden;
+
+	&:empty {
+		display: none;
+	}
+}
+.post-header__timestamp {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.post-body {
+	white-space: pre-wrap;
+	padding: 0 0 0 calc(16px + 8px);
+}
+
+.post-children {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin: 16px 0 0 calc(16px + 8px);
+
+	&:empty {
+		display: none;
+	}
+}
+
+.post-footer {
+	margin: 8px 0 0 calc(16px + 8px);
+}
+
+/** `pl` Permalinked post */
+.pl-header {
+	font-size: 13px;
+	color: var(--text-secondary);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 8px 0;
+}
+.pl-header__avatar {
+	height: 16px;
+	width: 16px;
+	border-radius: 16px;
+
+	&:not([src]) {
+		background-color: red;
+	}
+}
+.pl-header__name {
+	color: var(--text-primary);
+	overflow: hidden;
+
+	&:empty {
+		display: none;
+	}
+}
+.pl-header__timestamp {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.pl-body {
+	white-space: pre-wrap;
+}
+
+/** `embed` Embeds */
+.embed {
+	margin-top: 8px;
+}
+
+/** `embed-image` Image embeds */
+.embed-image {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+.embed-image-item {
+	display: contents;
+}
+.embed-image-item_img {
+	height: 140px;
+}
