@@ -1,4 +1,4 @@
-import type { DID, RefOf, ResponseOf } from '@intrnl/bluesky-client/atp-schema';
+import type { DID, Records, RefOf, ResponseOf } from '@intrnl/bluesky-client/atp-schema';
 import { repeat } from '@intrnl/jsx-to-html';
 
 import Document from '~/components/Document.tsx';
@@ -69,10 +69,11 @@ interface PageProps {
 const Page = (props: PageProps) => {
 	const { thread } = props;
 
+	const title = getTitle(thread);
 	const replies = filterReplies(thread.replies, thread.post.author.did);
 
 	return (
-		<Document page="thread">
+		<Document page="thread" title={title}>
 			<PermalinkPost thread={thread} />
 
 			<hr class="divider" />
@@ -84,6 +85,15 @@ const Page = (props: PageProps) => {
 			</div>
 		</Document>
 	);
+};
+
+const getTitle = (thread: PageProps['thread']) => {
+	const post = thread.post;
+
+	const author = post.author;
+	const record = post.record as Records['app.bsky.feed.post'];
+
+	return `${author.displayName || `@${author.handle}`}: "${record.text}" / Blueviewer`;
 };
 
 const NotFoundPage = () => {
