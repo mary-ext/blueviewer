@@ -155,19 +155,27 @@ input:focus {
 	width: 16px;
 	border-radius: 16px;
 
+	.post:not([open]) & {
+		opacity: 0.45;
+	}
+
 	&:not([src]) {
 		background-color: var(--text-secondary);
 	}
 }
 .post-header__name {
-	color: var(--text-primary);
 	overflow: hidden;
+
+	.post[open] & {
+		color: var(--text-primary);
+	}
 
 	&:empty {
 		display: none;
 	}
 }
-.post-header__timestamp, .post-header__anchor {
+.post-header__timestamp,
+.post-header__anchor {
 	color: inherit;
 	text-decoration: none;
 
