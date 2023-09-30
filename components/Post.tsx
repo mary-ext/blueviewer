@@ -5,6 +5,7 @@ import { getRecordId } from '~/utils/api.ts';
 import { clsx, filterReplies } from '~/utils/view.ts';
 
 import PostContent from './PostContent.tsx';
+import Embed from './Embed.tsx';
 
 export interface PostProps {
 	thread: RefOf<'app.bsky.feed.defs#threadViewPost'>;
@@ -18,6 +19,7 @@ const Post = (props: PostProps) => {
 
 	const author = post.author;
 	const record = post.record as Records['app.bsky.feed.post'];
+	const embed = post.embed;
 
 	const replies = filterReplies(thread.replies, author.did);
 
@@ -44,6 +46,7 @@ const Post = (props: PostProps) => {
 
 			<div class="post-body">
 				<PostContent record={record} />
+				{embed && <Embed embed={embed} />}
 			</div>
 
 			<div class="post-children">
