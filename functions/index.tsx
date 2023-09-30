@@ -79,6 +79,9 @@ const Page = (props: PageProps) => {
 			</form>
 
 			<p>Accepts URLs from bsky.app, Langit, Tokimeki and Klearsky.</p>
+			<p>
+				<a href="https://github.com/intrnl/blueviewer">source code</a>
+			</p>
 		</Document>
 	);
 };
