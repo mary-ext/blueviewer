@@ -42,6 +42,9 @@ const Post = (props: PostProps) => {
 				<a href={permalink} class="post-header__timestamp">
 					{record.createdAt}
 				</a>
+				<a href={`#${post.cid}`} class="post-header__anchor">
+					#
+				</a>
 			</summary>
 
 			<div class="post-body">

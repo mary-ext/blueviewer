@@ -1,5 +1,7 @@
 import type { Records, RefOf } from '@intrnl/bluesky-client/atp-schema';
 
+import { getRecordId, getRepoId } from '~/utils/api.ts';
+
 import PostContent from './PostContent.tsx';
 import Embed from './Embed.tsx';
 
@@ -14,6 +16,8 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 	const author = post.author;
 	const record = post.record as Records['app.bsky.feed.post'];
 	const embed = post.embed;
+
+	const reply = record.reply;
 
 	return (
 		<div class="pl">
@@ -38,8 +42,38 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 				<PostContent record={record} />
 				{embed && <Embed embed={embed} />}
 			</div>
+
+			<div class="pl-footer">
+				<a href={getBskyAppUrl(author.did, getRecordId(post.uri))} target="_blank" class="pl-footer__link">
+					bsky.app
+				</a>
+
+				{reply && (
+					<>
+						<a href={getReplyUrl(reply.parent)} class="pl-footer__link">
+							parent
+						</a>
+						<a href={getReplyUrl(reply.root)} class="pl-footer__link">
+							root
+						</a>
+					</>
+				)}
+			</div>
 		</div>
 	);
 };
 
 export default PermalinkPost;
+
+const getBskyAppUrl = (actor: string, rkey: string) => {
+	return `https://bsky.app/profile/${actor}/post/${rkey}`;
+};
+
+const getReplyUrl = (ref: RefOf<'com.atproto.repo.strongRef'>) => {
+	const uri = ref.uri;
+
+	const actor = getRepoId(uri);
+	const rkey = getRecordId(uri);
+
+	return `/view?actor=${encodeURIComponent(actor)}&rkey=${encodeURIComponent(rkey)}`;
+};
