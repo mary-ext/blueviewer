@@ -29,7 +29,7 @@ const Post = (props: PostProps) => {
 		<details open id={post.cid} class={clsx(['post', !last && 'is-lined'])}>
 			<summary class="post-header">
 				{author.avatar ? (
-					<img src={author.avatar} class="post-header__avatar" />
+					<img src={author.avatar} loading="lazy" class="post-header__avatar" />
 				) : (
 					<div class="post-header__avatar"></div>
 				)}

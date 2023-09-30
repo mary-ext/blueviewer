@@ -20,6 +20,7 @@ const EmbedImage = (props: EmbedImageProps) => {
 							height={image.aspectRatio?.height}
 							width={image.aspectRatio?.width}
 							title={image.alt}
+							loading="lazy"
 							class="embed-image-item_img"
 						/>
 					</a>

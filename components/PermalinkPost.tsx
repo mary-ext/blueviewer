@@ -23,7 +23,7 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 		<div class="pl">
 			<div class="pl-header">
 				{author.avatar ? (
-					<img src={author.avatar} class="pl-header__avatar" />
+					<img src={author.avatar} loading="lazy" class="pl-header__avatar" />
 				) : (
 					<div class="pl-header__avatar"></div>
 				)}
