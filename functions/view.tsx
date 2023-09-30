@@ -79,7 +79,7 @@ const Page = (props: PageProps) => {
 
 			<div class="children">
 				{repeat(replies, (reply, idx, array) => (
-					<Post thread={reply} last={idx === replies.length - 1} />
+					<Post thread={reply} last={idx === array.length - 1} />
 				))}
 			</div>
 		</Document>
