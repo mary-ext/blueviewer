@@ -59,22 +59,23 @@ export const onRequest: PagesFunction = async (context) => {
 		return html(<NotFoundPage />, { status: 404 });
 	}
 
-	return html(<Page thread={thread} />, { status: 200 });
+	return html(<Page thread={thread} url={request.url} />, { status: 200 });
 };
 
 interface PageProps {
 	thread: RefOf<'app.bsky.feed.defs#threadViewPost'>;
+	url?: string;
 }
 
 const Page = (props: PageProps) => {
-	const { thread } = props;
+	const { thread, url } = props;
 
 	const title = getTitle(thread);
 	const replies = filterReplies(thread.replies, thread.post.author.did);
 
 	return (
 		<Document page="thread" title={title}>
-			<PermalinkPost thread={thread} />
+			<PermalinkPost thread={thread} url={url} />
 
 			<hr class="divider" />
 

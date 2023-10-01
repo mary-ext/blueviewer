@@ -7,10 +7,11 @@ import Embed from './Embed.tsx';
 
 interface PermalinkPostProps {
 	thread: RefOf<'app.bsky.feed.defs#threadViewPost'>;
+	url?: string;
 }
 
 const PermalinkPost = (props: PermalinkPostProps) => {
-	const { thread } = props;
+	const { thread, url } = props;
 
 	const post = thread.post;
 	const author = post.author;
@@ -47,6 +48,16 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 				<a href={getBskyAppUrl(author.did, getRecordId(post.uri))} target="_blank" class="pl-footer__link">
 					bsky.app
 				</a>
+
+				{url && (
+					<a
+						href={`https://archive.is/?run=1&url=${encodeURIComponent(url)}`}
+						target="_blank"
+						class="pl-footer__link"
+					>
+						archive.is
+					</a>
+				)}
 
 				{reply && (
 					<>
