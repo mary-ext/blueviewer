@@ -51,7 +51,7 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 
 				{url && (
 					<a
-						href={`https://archive.is/?run=1&url=${encodeURIComponent(url)}`}
+						href={`https://archive.is/?url=${encodeURIComponent(url)}`}
 						target="_blank"
 						class="pl-footer__link"
 					>
