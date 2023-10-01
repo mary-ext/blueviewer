@@ -280,4 +280,6 @@ input:focus {
 }
 .embed-image-item_img {
 	height: 140px;
+	width: auto;
+	max-width: 100%;
 }
