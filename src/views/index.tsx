@@ -12,12 +12,13 @@ interface FormResult {
 }
 
 const methods: RouteMethods<ExecutionContextWithEnv> = {
-	async GET({ request }) {
-		const method = request.method;
-
+	async GET() {
+		return html(<Page />);
+	},
+	async POST({ request }) {
 		let form: FormResult | undefined;
 
-		jump: if (method === 'POST') {
+		jump: {
 			const data = await request.formData();
 			const url = new URL(request.url);
 
