@@ -2,7 +2,7 @@ import type { Records, RefOf } from '@intrnl/bluesky-client/atp-schema';
 import { repeat } from '@intrnl/jsx-to-string';
 
 import { getRecordId } from '../utils/api.ts';
-import { clsx, filterReplies } from '../utils/view.ts';
+import { filterReplies } from '../utils/view.ts';
 
 import PostContent from './PostContent.tsx';
 import Embed from './Embed.tsx';
@@ -26,7 +26,9 @@ const Post = (props: PostProps) => {
 	const permalink = getPermalinkUrl(author.did, getRecordId(post.uri));
 
 	return (
-		<details open id={post.cid} class={clsx(['post', !last && 'is-lined'])}>
+		<details open id={post.cid} class="post">
+			{!last && <div class="post__line"></div>}
+
 			<summary class="post-header">
 				{author.avatar ? (
 					<img src={author.avatar} loading="lazy" class="post-header__avatar" />

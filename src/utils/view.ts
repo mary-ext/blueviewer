@@ -23,21 +23,3 @@ export const filterReplies = (
 
 	return [];
 };
-
-export const clsx = (classes: (string | false | 0 | null | undefined)[]) => {
-	let result = '';
-
-	let idx = 0;
-	let len = classes.length;
-
-	let tmp: any;
-
-	for (; idx < len; idx++) {
-		if ((tmp = classes[idx])) {
-			result && (result += ' ');
-			result += tmp;
-		}
-	}
-
-	return result;
-};

@@ -125,23 +125,20 @@ input:focus {
 	scroll-margin: 16px;
 	position: relative;
 
-	&.is-lined::before {
-		content: '';
-		display: block;
-		position: absolute;
-		top: calc(16px + 12px);
-		bottom: -8px;
-		left: 8px;
-		opacity: 0.5;
-		border-right: 1px solid var(--text-secondary);
-	}
-
 	&:target {
 		& > .post-header,
 		& > .post-body {
 			background-color: var(--bg-highlight);
 		}
 	}
+}
+.post__line {
+	position: absolute;
+	top: calc(16px + 12px);
+	bottom: -8px;
+	left: 8px;
+	opacity: 0.5;
+	border-right: 1px solid var(--text-secondary);
 }
 
 .post-header {
