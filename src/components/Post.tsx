@@ -1,8 +1,8 @@
 import type { Records, RefOf } from '@intrnl/bluesky-client/atp-schema';
-import { repeat } from '@intrnl/jsx-to-html';
+import { repeat } from '@intrnl/jsx-to-string';
 
-import { getRecordId } from '~/utils/api.ts';
-import { clsx, filterReplies } from '~/utils/view.ts';
+import { getRecordId } from '../utils/api.ts';
+import { clsx, filterReplies } from '../utils/view.ts';
 
 import PostContent from './PostContent.tsx';
 import Embed from './Embed.tsx';
@@ -49,7 +49,7 @@ const Post = (props: PostProps) => {
 
 			<div class="post-body">
 				<PostContent record={record} />
-				{embed && <Embed embed={embed} />}
+				{embed != null && <Embed embed={embed} />}
 			</div>
 
 			<div class="post-children">

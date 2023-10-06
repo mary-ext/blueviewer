@@ -1,7 +1,7 @@
 import type { Records } from '@intrnl/bluesky-client/atp-schema';
-import { repeat } from '@intrnl/jsx-to-html';
+import { repeat } from '@intrnl/jsx-to-string';
 
-import { isLinkValid, segmentRichText } from '~/utils/richtext.ts';
+import { isLinkValid, segmentRichText } from '../utils/richtext.ts';
 
 export interface PostContentProps {
 	record: Records['app.bsky.feed.post'];

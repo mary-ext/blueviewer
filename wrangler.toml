@@ -1,0 +1,3 @@
+[build]
+command = "vite build"
+watch_dir = ["src/", "static/assets/"]

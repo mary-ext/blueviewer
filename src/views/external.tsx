@@ -1,22 +1,22 @@
 import * as tldts from 'tldts';
 
-import Document from '~/components/Document.tsx';
+import Document from '../components/Document.tsx';
 
-import { html, respond } from '~/utils/response.ts';
+import type { RouteMethods } from '../utils/router.ts';
+import { html } from '../utils/response.ts';
 
-export const onRequest: PagesFunction = async (context) => {
-	const request = context.request;
-	const method = request.method;
+import type { ExecutionContextWithEnv } from '../types.ts';
 
-	if (method !== 'GET') {
-		return respond('Method not allowed', { status: 405, headers: { allow: 'GET' } });
-	}
+const methods: RouteMethods<ExecutionContextWithEnv> = {
+	GET({ request }) {
+		const url = new URL(request.url);
+		const to = url.searchParams.get('to');
 
-	const url = new URL(request.url);
-	const uri = url.searchParams.get('to');
-
-	return html(<Page uri={uri} />);
+		return html(<Page uri={to} />);
+	},
 };
+
+export default methods;
 
 interface PageProps {
 	uri: string | null;

@@ -16,7 +16,7 @@ const Embed = (props: EmbedProps) => {
 
 	const { images, link, record } = getEmbed(embed);
 
-	return <div class="embed">{images && <EmbedImage images={images} />}</div>;
+	return <div class="embed">{images != null && <EmbedImage images={images} />}</div>;
 };
 
 export default Embed;

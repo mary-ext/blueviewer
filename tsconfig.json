@@ -5,17 +5,17 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
-		"emitDeclarationOnly": true,
+		"noEmit": true,
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"strict": true,
 		"skipLibCheck": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "@intrnl/jsx-to-html",
+		"jsxImportSource": "@intrnl/jsx-to-string",
 		"types": ["@cloudflare/workers-types"],
 		"paths": {
 			"~/*": ["./*"]
 		}
 	},
-	"include": ["functions", "components", "utils"]
+	"include": ["src"]
 }

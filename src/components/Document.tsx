@@ -1,4 +1,4 @@
-import type { JSXNode } from '@intrnl/jsx-to-html';
+import type { JSXNode } from '@intrnl/jsx-to-string';
 
 export interface DocumentProps {
 	title?: string;

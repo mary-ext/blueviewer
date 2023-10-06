@@ -1,2 +1,5 @@
 node_modules/
 .wrangler/
+
+static/_worker.js
+tsconfig.tsbuildinfo

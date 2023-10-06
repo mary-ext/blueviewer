@@ -1,6 +1,6 @@
 import type { Records, RefOf } from '@intrnl/bluesky-client/atp-schema';
 
-import { getRecordId, getRepoId } from '~/utils/api.ts';
+import { getRecordId, getRepoId } from '../utils/api.ts';
 
 import PostContent from './PostContent.tsx';
 import Embed from './Embed.tsx';
@@ -41,7 +41,7 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 
 			<div class="pl-body">
 				<PostContent record={record} />
-				{embed && <Embed embed={embed} />}
+				{embed != null && <Embed embed={embed} />}
 			</div>
 
 			<div class="pl-footer">
@@ -49,7 +49,7 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 					bsky.app
 				</a>
 
-				{url && (
+				{url != null && (
 					<a
 						href={`https://archive.is/?url=${encodeURIComponent(url)}`}
 						target="_blank"
@@ -59,7 +59,7 @@ const PermalinkPost = (props: PermalinkPostProps) => {
 					</a>
 				)}
 
-				{reply && (
+				{reply != null && (
 					<>
 						<a href={getReplyUrl(reply.parent)} class="pl-footer__link">
 							parent

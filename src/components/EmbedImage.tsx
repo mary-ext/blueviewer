@@ -1,5 +1,5 @@
 import type { RefOf } from '@intrnl/bluesky-client/atp-schema';
-import { repeat } from '@intrnl/jsx-to-html';
+import { repeat } from '@intrnl/jsx-to-string';
 
 type EmbeddedImage = RefOf<'app.bsky.embed.images#viewImage'>;
 
