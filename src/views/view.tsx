@@ -5,7 +5,7 @@ import Document from '../components/Document.tsx';
 import PermalinkPost from '../components/PermalinkPost.tsx';
 import Post from '../components/Post.tsx';
 
-import { agent, isDid } from '../utils/api.ts';
+import { agent, getCollectionId, isDid } from '../utils/api.ts';
 import { html } from '../utils/response.ts';
 import type { RouteMethods } from '../utils/router.ts';
 import { filterReplies } from '../utils/view.ts';
@@ -74,7 +74,7 @@ const Page = (props: PageProps) => {
 	const replies = filterReplies(thread.replies, thread.post.author.did);
 
 	return (
-		<Document page="thread" title={title}>
+		<Document page="thread" title={title} head={getEmbedHead(thread)}>
 			<PermalinkPost thread={thread} url={url} />
 
 			<hr class="divider" />
@@ -86,6 +86,108 @@ const Page = (props: PageProps) => {
 			</div>
 		</Document>
 	);
+};
+
+const getEmbedHead = (thread: PageProps['thread']) => {
+	const parent = thread.parent;
+	const post = thread.post;
+
+	const record = post.record as Records['app.bsky.feed.post'];
+
+	const profile = post.author;
+	const embed = post.embed;
+
+	const title = profile.displayName ? `${profile.displayName} (@${profile.handle})` : profile.handle;
+
+	const heads = [
+		<>
+			<meta name="theme-color" content="#0085ff" />
+			<meta property="og:site_name" content="Blueviewer" />
+		</>,
+	];
+
+	let header = '';
+	let text = record.text;
+
+	if (parent) {
+		if (parent.$type === 'app.bsky.feed.defs#threadViewPost') {
+			header += `[replying to @${parent.post.author.handle}] `;
+		} else {
+			header += `[reply: not found] `;
+		}
+	}
+
+	if (embed) {
+		const $type = embed.$type;
+
+		let images: RefOf<'app.bsky.embed.images#viewImage'>[] | undefined;
+		let record: RefOf<'app.bsky.embed.record#viewRecord'> | null | undefined;
+
+		if ($type === 'app.bsky.embed.images#view') {
+			images = embed.images;
+		} else if ($type === 'app.bsky.embed.recordWithMedia#view') {
+			const med = embed.media;
+
+			const rec = embed.record.record;
+			const rectype = rec.$type;
+
+			if (med.$type === 'app.bsky.embed.images#view') {
+				images = med.images;
+			}
+
+			if (rectype === 'app.bsky.embed.record#viewRecord') {
+				record = rec;
+			} else if (
+				rectype === 'app.bsky.embed.record#viewNotFound' &&
+				getCollectionId(rec.uri) === 'app.bsky.feed.post'
+			) {
+				record = null;
+			}
+		} else if ($type === 'app.bsky.embed.record#view') {
+			const rec = embed.record;
+			const rectype = rec.$type;
+
+			if (rectype === 'app.bsky.embed.record#viewRecord') {
+				record = rec;
+			} else if (
+				rectype === 'app.bsky.embed.record#viewNotFound' &&
+				getCollectionId(rec.uri) === 'app.bsky.feed.post'
+			) {
+				record = null;
+			}
+		}
+
+		if (images) {
+			const img = images[0];
+			const url = img.fullsize;
+
+			heads.push(
+				<>
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta property="og:image" content={url} />
+				</>,
+			);
+		}
+
+		if (record === null) {
+			header += `[quote: not found]`;
+		} else if (record) {
+			header += `[quoting @${record.author.handle}] `;
+		}
+	}
+
+	if (header) {
+		text = `${header}\n\n${text}`;
+	}
+
+	heads.push(
+		<>
+			<meta property="og:title" content={title} />
+			<meta property="og:description" content={text} />
+		</>,
+	);
+
+	return heads;
 };
 
 const getTitle = (thread: PageProps['thread']) => {

@@ -4,9 +4,10 @@ export interface DocumentProps {
 	title?: string;
 	page?: string;
 	children?: JSXNode;
+	head?: JSXNode;
 }
 
-const Document = ({ title, page, children }: DocumentProps) => {
+const Document = ({ title, page, children, head }: DocumentProps) => {
 	const className = 'page' + (page ? ` ${page}-page` : '');
 
 	return (
@@ -16,6 +17,7 @@ const Document = ({ title, page, children }: DocumentProps) => {
 				<meta name="viewport" content="width=device-width" />
 				<title>{title || 'Blueviewer'}</title>
 				<link rel="stylesheet" href="/assets/styles.css" />
+				{head}
 			</head>
 			<body>
 				<div class={className}>{children}</div>
