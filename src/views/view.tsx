@@ -135,25 +135,23 @@ const getEmbedHead = (thread: PageProps['thread']) => {
 				images = med.images;
 			}
 
-			if (rectype === 'app.bsky.embed.record#viewRecord') {
-				record = rec;
-			} else if (
-				rectype === 'app.bsky.embed.record#viewNotFound' &&
-				getCollectionId(rec.uri) === 'app.bsky.feed.post'
-			) {
-				record = null;
+			if (getCollectionId(rec.uri) === 'app.bsky.feed.post') {
+				if (rectype === 'app.bsky.embed.record#viewRecord') {
+					record = rec;
+				} else {
+					record = null;
+				}
 			}
 		} else if ($type === 'app.bsky.embed.record#view') {
 			const rec = embed.record;
 			const rectype = rec.$type;
 
-			if (rectype === 'app.bsky.embed.record#viewRecord') {
-				record = rec;
-			} else if (
-				rectype === 'app.bsky.embed.record#viewNotFound' &&
-				getCollectionId(rec.uri) === 'app.bsky.feed.post'
-			) {
-				record = null;
+			if (getCollectionId(rec.uri) === 'app.bsky.feed.post') {
+				if (rectype === 'app.bsky.embed.record#viewRecord') {
+					record = rec;
+				} else {
+					record = null;
+				}
 			}
 		}
 
