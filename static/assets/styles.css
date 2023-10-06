@@ -35,6 +35,7 @@
 }
 
 html {
+	-webkit-text-size-adjust: 100%;
 	font-family: 'Arial', sans-serif, 'Noto Color Emoji';
 	color: var(--text-primary);
 	background: var(--bg-primary);
