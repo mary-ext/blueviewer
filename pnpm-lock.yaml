@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.2.5
     version: 0.2.5
   tldts:
-    specifier: ^6.0.15
-    version: 6.0.15
+    specifier: ^6.0.16
+    version: 6.0.16
 
 devDependencies:
   '@babel/core':
@@ -972,8 +972,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001546
-      electron-to-chromium: 1.4.543
+      caniuse-lite: 1.0.30001547
+      electron-to-chromium: 1.4.549
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
     dev: true
@@ -982,8 +982,8 @@ packages:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: true
 
-  /caniuse-lite@1.0.30001546:
-    resolution: {integrity: sha512-zvtSJwuQFpewSyRrI3AsftF6rM0X80mZkChIt1spBGEvRglCrjTniXvinc8JKRoqTwXAgvqTImaN9igfSMtUBw==}
+  /caniuse-lite@1.0.30001547:
+    resolution: {integrity: sha512-W7CrtIModMAxobGhz8iXmDfuJiiKg1WADMO/9x7/CLNin5cpSbuBjooyoIUVB5eyCc36QuTVlkVa1iB2S5+/eA==}
     dev: true
 
   /capnp-ts@0.7.0:
@@ -1058,8 +1058,8 @@ packages:
       ms: 2.1.2
     dev: true
 
-  /electron-to-chromium@1.4.543:
-    resolution: {integrity: sha512-t2ZP4AcGE0iKCCQCBx/K2426crYdxD3YU6l0uK2EO3FZH0pbC4pFz/sZm2ruZsND6hQBTcDWWlo/MLpiOdif5g==}
+  /electron-to-chromium@1.4.549:
+    resolution: {integrity: sha512-gpXfJslSi4hYDkA0mTLEpYKRv9siAgSUgZ+UWyk+J5Cttpd1ThCVwdclzIwQSclz3hYn049+M2fgrP1WpvF8xg==}
     dev: true
 
   /esbuild@0.17.19:
@@ -1428,15 +1428,15 @@ packages:
       has-flag: 3.0.0
     dev: true
 
-  /tldts-core@6.0.15:
-    resolution: {integrity: sha512-8RuyZ9S3kY2NaSx5zfEiURuyM1kipN6xXp/1guWWKwiSqvb/7dNKKjfvF88H3A3wX1pagaNlewK21kpxZt/DPg==}
+  /tldts-core@6.0.16:
+    resolution: {integrity: sha512-/ypKV6FdiDpXnVEUmPy9s5xfoSAyNPvj1r6V/3FqQBWi0ay3asObLX4Hn8eLwkHB0+VEr2bneu3CnX4uT3fO0w==}
     dev: false
 
-  /tldts@6.0.15:
-    resolution: {integrity: sha512-GMoI6Ae4c8vv7A3lgmD+ubAziHINxn3/X1BTRqfePmTnff2qAaZsGnDMo2OHbDn9psPLmW9SCBISiNzyce6bKw==}
+  /tldts@6.0.16:
+    resolution: {integrity: sha512-TkEq38COU640mzOKPk4D1oH3FFVvwEtMaKIfw/+F/umVsy7ONWu8PPQH0c11qJ/Jq/zbcQGprXGsT8GcaDSmJg==}
     hasBin: true
     dependencies:
-      tldts-core: 6.0.15
+      tldts-core: 6.0.16
     dev: false
 
   /to-fast-properties@2.0.0:
