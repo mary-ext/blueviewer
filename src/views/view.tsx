@@ -74,7 +74,16 @@ const Page = (props: PageProps) => {
 	const replies = filterReplies(thread.replies, thread.post.author.did);
 
 	return (
-		<Document page="thread" title={title} head={getEmbedHead(thread)}>
+		<Document
+			page="thread"
+			title={title}
+			head={
+				<>
+					{getEmbedHead(thread)}
+					<script type="module" src="/assets/timestamp.js" />
+				</>
+			}
+		>
 			<PermalinkPost thread={thread} url={url} />
 
 			<hr class="divider" />
