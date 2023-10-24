@@ -162,8 +162,6 @@ input:focus {
 	}
 }
 .post-header__name {
-	overflow: hidden;
-
 	.post[open] & {
 		color: var(--text-primary);
 	}
@@ -172,8 +170,17 @@ input:focus {
 		display: none;
 	}
 }
+.post-header__name,
+.post-header__handle {
+	word-break: break-all;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
 .post-header__timestamp,
 .post-header__anchor {
+	white-space: nowrap;
 	color: inherit;
 	text-decoration: none;
 
@@ -228,7 +235,16 @@ input:focus {
 		display: none;
 	}
 }
+.pl-header__name,
+.pl-header__handle {
+	word-break: break-all;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
 .pl-header__timestamp {
+	white-space: nowrap;
 	color: inherit;
 	text-decoration: none;
 
