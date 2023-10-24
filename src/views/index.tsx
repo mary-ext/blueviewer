@@ -83,7 +83,7 @@ const Page = (props: PageProps) => {
 
 			<p>Accepts URLs from bsky.app, Langit, Tokimeki and Klearsky.</p>
 			<p>
-				<a href="https://github.com/intrnl/blueviewer">source code</a>
+				<a href="https://github.com/externdefs/blueviewer">source code</a>
 			</p>
 		</Document>
 	);
