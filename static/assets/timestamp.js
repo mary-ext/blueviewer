@@ -7,7 +7,7 @@ const MONTH = WEEK * 4;
 const YEAR = MONTH * 12;
 
 const absDisplayFmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
-const absTitleFmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'medium' });
+const absTitleFmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'short' });
 
 const lookupReltime = (delta) => {
 	if (delta < SECOND) {
