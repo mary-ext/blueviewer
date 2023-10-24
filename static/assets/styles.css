@@ -224,7 +224,7 @@ input:focus {
 	border-radius: 16px;
 
 	&:not([src]) {
-		background-color: red;
+		background-color: var(--text-secondary);
 	}
 }
 .pl-header__name {
