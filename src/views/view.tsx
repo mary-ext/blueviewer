@@ -165,13 +165,12 @@ const getEmbedHead = (thread: PageProps['thread']) => {
 		}
 
 		if (images) {
-			const img = images[0];
-			const url = img.fullsize;
-
 			heads.push(
 				<>
 					<meta name="twitter:card" content="summary_large_image" />
-					<meta property="og:image" content={url} />
+					{repeat(images, (img) => (
+						<meta property="og:image" content={img.fullsize} />
+					))}
 				</>,
 			);
 		}
